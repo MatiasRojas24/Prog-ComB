@@ -80,4 +80,3 @@ if nivel == "extranjeros" and dia_n == 1 and mes == 1 or mes == 7:
     arancel = int(inf[inf.find("$")+1:])
     ing_tot = arancel * cant_a 
     print(f"Los ingresos totales son de ${ing_tot:.2f}")
-
