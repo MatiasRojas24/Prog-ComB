@@ -126,12 +126,7 @@ print(f"La raíz cuadradra del número {num} es: {raiz_cuadrada:.2f} y su raíz 
 # introduce 23 que muestre 32.
 print("13.")
 numero = input("Ingrese un número: ")
-long = len(numero)
-invertido = ""
-while long != 0:
-    invertido += str(numero[long-1])
-    long -=1
-print("El invertido del número ingresado es: ", invertido)
+print("El invertido del número ingresado es: ", numero[::-1])
 
 # 14. Dadas dos variables numéricas A y B, que el usuario debe teclear, se pide realizar un algoritmo que intercambie 
 # los valores de ambas variables y muestre cuánto valen al final las dos variables.
