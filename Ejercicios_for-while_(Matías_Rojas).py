@@ -3,27 +3,23 @@
 print("Bienvenido.")
 mensaje1 = input("Ingrese el primer mensaje: ")
 mensaje1 = mensaje1.lower()
-encrip1 =  ""
+letraN =  ""
 mens_final1 = ""
 
 mensaje2 = input("Ingrese el segundo mensaje: ")
 mensaje2 = mensaje2.lower()
-encrip2 =  ""
 mens_final2 = ""
 
 mensaje3 = input("Ingrese el tercer mensaje: ")
 mensaje3 = mensaje3.lower()
-encrip3 =  ""
 mens_final3 = ""
 
 mensaje4 = input("Ingrese el cuarto mensaje: ")
 mensaje4 = mensaje4.lower()
-encrip4 =  ""
 mens_final4 = ""
 
 mensaje5 = input("Ingrese el quinto mensaje: ")
 mensaje5 = mensaje5.lower()
-encrip5 =  ""
 mens_final5 = ""
 
 corrimiento = int(input("Ingrese cuantas letras se tienen que correr para los mensajes: "))
@@ -32,66 +28,50 @@ abc = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, '
 cba = {"1" : 'a', "2" : 'b', "3" : 'c', "4" : 'd', "5" : 'e', "6" : 'f', "7" : 'g', "8" : 'h', "9" : 'i', "10" : 'j', 
     "11" : 'k', "12" : 'l', "13": 'm', "14" : 'n', "15" : 'ñ', "16": 'o', "17": 'p', "18": 'q', "19": 'r', "20": 's', "21": 't', 
     "22": 'u', "23": 'v', "24": 'w', "25": 'x', "26": 'y', "27" : 'z',}
-
 for letra in mensaje1:
-        if letra in abc:
-            encrip1 += str((abc[letra] + corrimiento)%27) + " "
+        if letra == " ":
+             mens_final1 += letra
+        elif letra in abc:
+            letraN = str((abc[letra] + corrimiento)%27)
+            mens_final1 += cba[letraN]
         else:
-            encrip1 += letra + " "
-encrip1 = encrip1.split()
-for n in encrip1:
-    if  n in cba:
-        mens_final1 += cba[n]
-    else:
-        mens_final1 += n
-
+           mens_final1 += letra
 for letra in mensaje2:
-        if letra in abc:
-            encrip2 += str((abc[letra] + corrimiento)%27) + " "
+        if letra == " ":
+             mens_final2 += letra
+        elif letra in abc:
+            letraN = str((abc[letra] + corrimiento)%27)
+            mens_final2 += cba[letraN]
         else:
-            encrip2 += letra + " "
-encrip2 = encrip2.split()
-for n in encrip2:
-    if  n in cba:
-        mens_final2 += cba[n]
-    else:
-        mens_final2 += n
-
+           mens_final2 += letra
+            
 for letra in mensaje3:
-        if letra in abc:
-            encrip3 += str((abc[letra] + corrimiento)%27) + " "
+        if letra == " ":
+             mens_final3 += letra
+        elif letra in abc:
+            letraN = str((abc[letra] + corrimiento)%27)
+            mens_final3 += cba[letraN]
         else:
-            encrip3 += letra + " "
-encrip3 = encrip3.split()
-for n in encrip3:
-    if  n in cba:
-        mens_final3 += cba[n]
-    else:
-        mens_final3 += n
-
+           mens_final3 += letra
+            
 for letra in mensaje4:
-        if letra in abc:
-            encrip4 += str((abc[letra] + corrimiento)%27) + " "
+        if letra == " ":
+             mens_final4 += letra
+        elif letra in abc:
+            letraN = str((abc[letra] + corrimiento)%27)
+            mens_final4 += cba[letraN]
         else:
-            encrip4 += letra + " "
-encrip4 = encrip4.split()
-for n in encrip4:
-    if  n in cba:
-        mens_final4 += cba[n]
-    else:
-        mens_final4 += n
+           mens_final4 += letra
 
 for letra in mensaje5:
-        if letra in abc:
-            encrip5 += str((abc[letra] + corrimiento)%27) + " "
+        if letra == " ":
+             mens_final5 += letra
+        elif letra in abc:
+            letraN = str((abc[letra] + corrimiento)%27)
+            mens_final5 += cba[letraN]
         else:
-            encrip5 += letra + " "
-encrip5 = encrip5.split()
-for n in encrip5:
-    if  n in cba:
-        mens_final5 += cba[n]
-    else:
-        mens_final5 += n
+           mens_final5 += letra
+            
 print("primer mensaje: ")
 print(mens_final1)
 print("segundo mensaje: ")
