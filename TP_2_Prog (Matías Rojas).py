@@ -188,8 +188,11 @@ else:
 print("Ecuación a resolver: a . x + b = 0")
 valor_a = int(input("Ingrese el valor de a: "))
 valor_b = int(input("Ingrese el valor de b: "))
-valor_x = -valor_b / valor_a
-print("el valor de X es: ", valor_x)
+if valor_a != 0:
+    valor_x = -valor_b / valor_a
+    print("el valor de X es: ", valor_x)
+else:
+    print("No puede dividir por 0")
 
 # 15- Escriba un programa que pregunte primero si se quiere calcular el área de un triángulo o la de un círculo. 
 # Si se  contesta que se quiere calcular el área de un triángulo (escribiendo T o t), el programa tiene que 
