@@ -1,0 +1,14 @@
+def most(a,b):
+    if(x>y):
+        return a
+    else:
+        return b
+def least(a,b):
+    if(x<y):
+        return a
+    else:
+        return b
+
+x = int(input("Ingrese un número: "))
+y = int(input("Ingrese otro número: "))
+print(most(x-3, least(x+2, y-5)))
