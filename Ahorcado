@@ -1,0 +1,48 @@
+import random
+words = ["palabra", "teclado", "programacion", "codigo", "procesador", "monitor", "fuente", "python"]
+word = words[random.randint(0,len(words)-1)]
+counter = 0
+aux__word = ""
+aux_hidden_word = []
+hidden_word = ""
+letter = ""
+lives = 6
+is_in_word = False
+
+for i in word:
+    aux_hidden_word.append("_")
+while lives != 0 or hidden_word != word:
+    counter = 0
+    is_in_word = False
+    aux_word = ""
+    print("Estado de la palabra: ",hidden_word)
+    print("Vidas restantes: ", lives)
+    letter = input("Ingrese una letra: ")
+    for i in word:
+        if letter == i:
+            is_in_word = True
+    if is_in_word == True:
+        for i in word:
+            if letter == i:
+                aux_hidden_word[counter] = letter
+            counter += 1
+        if is_in_word == True:
+                print("La letra '"+letter+"' se encuentra en la palabra!")
+                print("")
+    else: 
+        lives -= 1
+        print("La letra '"+letter+"' no se encuentra en la palabra :(")
+        print("Perdiste una vida!")
+        print("")
+    if is_in_word == True:
+        for i in aux_hidden_word:
+            aux_word += i 
+        hidden_word = aux_word
+    
+    if lives == 0:
+        print("Perdiste todas tus vidas, suerte para la próxima")
+        break
+    if hidden_word == word:
+        print("La")
+        print("Adivinaste la palabra! Felicidades!")
+        break
