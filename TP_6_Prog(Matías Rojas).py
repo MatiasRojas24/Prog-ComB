@@ -58,14 +58,82 @@ while counter != len(num_frecuency_list_aux):
 print("Se ha creado una lista que incluye (num, cantidad de veces que se repite el número)")
 print("La listas resultante es: ",num_frecuency_list)
 
-# 6.	Solicitar al usuario que ingrese los nombres de pila de los alumnos de nivel primario de una escuela, finalizando al ingresar ‘x’. A continuación, solicitar que ingrese los nombres de los alumnos de nivel secundario, finalizando al ingresar ‘x’.
+# 6.	Solicitar al usuario que ingrese los nombres de pila de los alumnos de nivel primario de una escuela, finalizando al ingresar ‘x’. 
+# A continuación, solicitar que ingrese los nombres de los alumnos de nivel secundario, finalizando al ingresar ‘x’.
 # a.	Informar los nombres de todos los alumnos de nivel primario y de los de nivel secundario, sin repeticiones.
 # b.	Informar qué nombres se repiten entre los alumnos de nivel primario y secundario.
 # c.	Informar qué nombres de nivel primario no se repiten en los de nivel secundario.
 elementary_school_names = []
 middle_school_names = []
+school_names = []
 print("Ingrese uno a uno el nombre de pila de los alumnos de primaria (para finalizar ingrese x): ")
 name = ""
 while name != "x" or name != "X":
-    if name != "x" or name != "X":
-        name = input().capitalize()
+    name = input().capitalize()
+    if name == "x" or name == "X":
+        break
+    elementary_school_names.append(name)
+print("Ingrese uno a uno el nombre de pila de los alumnos de secundaria (para finalizar ingrese x): ")
+name = ""
+while name != "x" or name != "X":
+    name = input().capitalize()
+    if name == "x" or name == "X":
+        break
+    if name != "" or name != " ":
+        middle_school_names.append(name)
+
+for i in elementary_school_names:
+    school_names.append(i)
+for i in middle_school_names:
+    school_names.append(i)
+
+aux_school_names = school_names.copy()
+
+for i in school_names:
+    if school_names.count(i) != 1:
+        school_names.remove(i)
+
+print("Los nombres de todos los alumnos de primaria y secundaria son: ")
+for i in school_names:
+    print("-", i)
+
+print("Los nombres que se repiten entre los alumnos son: ")
+for i in school_names:
+    if aux_school_names.count(i) > 1:
+        print("-",i)
+
+print("Los nombres de primaria que no se repiten en secundaria son: ")
+for i in elementary_school_names:
+    if aux_school_names.count(i) == 1:
+        print("-",i)
+        
+# 7.	Escribir un programa que procese strings ingresados por el usuario. La lectura finaliza cuando se hayan procesado 50 strings. 
+# Al finalizar, informar la cantidad total de ocurrencias de cada carácter, en todos los strings ingresados. Ejemplo:
+# ‘r’:5
+# ‘%’:3
+# ‘a’:8
+# ‘9’:1
+counter = 0
+strings = []
+caracters = []
+caracter_frecuency = []
+while counter != 5:
+    string = input("Ingrese un string: ")
+    strings.append(string)
+    counter += 1
+
+for element in strings:
+    for letter in element:
+        caracters.append(letter)
+aux_caracters = caracters.copy()
+
+for i in aux_caracters:
+    if caracters.count(i) != 1:
+        caracters.remove(i)
+
+for i in caracters:
+    caracter_frecuency.append((f"'{i}':{aux_caracters.count(i)}"))
+
+print("La lista de ocurrencias por caracter en los strings ingresados es la siguiente:")
+for i in caracter_frecuency:
+    print(i)
