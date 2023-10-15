@@ -137,3 +137,254 @@ for i in caracters:
 print("La lista de ocurrencias por caracter en los strings ingresados es la siguiente:")
 for i in caracter_frecuency:
     print(i)
+
+# 8.	Diez equipos de la liga inter-barrial identificados con los números 1, 2, 3, 4, …, 10, participaron en un campeonato de fútbol 
+# con modalidad todos contra todos. 
+# Escriba un programa que:
+#  Lea el cuadro de goles en un arreglo de dos dimensiones.
+#  Muestre para cada equipo la cantidad de triunfos, empates y derrotas.
+#  Muestre la diferencia entre el total de goles marcados y el total de goles recibidos.
+#  Determine la cantidad de puntos obtenidos por cada equipo.
+import random
+def dif_scored_and_received_goals (team):
+        team = team-1
+        scored_goals = 0
+        received_goals = 0
+        for j in range(0,10):
+            if team != j:
+                scored_goals += goals[j][team]
+        for j in range(0,10):
+            if team != j:
+                received_goals += goals[team][j]
+        print(f"El equipo {team+1} ha hecho {scored_goals} goles y ha recibido {received_goals} teniendo una diferencia de {abs(scored_goals-received_goals)} goles entre anotados y recibidos")
+
+def wins_draws_defeats (team):
+    team = team -1
+    wins = 0
+    draws = 0
+    defeats = 0
+    for j in range(0,10):
+        if team != j:
+            if goals[j][team] > goals[team][j]:
+                wins += 1
+            if goals[team][j] > goals[j][team]:
+                defeats += 1
+            if goals[j][team] == goals[team][j]:
+                draws += 1
+    print(f"Las estadísticas del equipo {team+1} son las siguientes:")
+    print("Victorias: ",wins)
+    print("Derrotas: ",defeats)
+    print("Empates: ",draws)
+
+def points_per_team (team):
+    team = team -1
+    wins = 0
+    draws = 0
+    points = 0
+    for j in range(0,10):
+        if team != j:
+            if goals[j][team] > goals[team][j]:
+                wins += 1
+            if goals[j][team] == goals[team][j]:
+                draws += 1
+    points += wins * 3
+    points += draws 
+    print(f"El equipo {team+1} tiene {points} puntos")
+
+goals = []
+goals_aux = []
+
+for i in range(0,10):
+    for j in range(0,10):
+        if i == j:
+            goals_aux.append(0)
+            continue
+        goals_aux.append(random.randint(0,5))
+    goals.append(goals_aux.copy())
+    goals_aux.clear()
+team = 1
+
+print("La tabla con los goles hechos por los equipos es la siguiente (siendo las columnas el equipo que hizo los goles y las filas el equipo que recibió los goles):")
+print(end='    ')
+for i in range(1,11):
+        print(team, end = '   ')
+        team += 1
+print("")
+team = 1
+for i in goals:
+        print(team, end='   ')
+        for j in i:
+            print(j, end = '   ')
+        team +=1
+        print("")
+print("")
+
+#  Muestre para cada equipo la cantidad de triunfos, empates y derrotas.
+for i in range(1,11):
+    wins_draws_defeats(i)
+print("")
+#  Muestre la diferencia entre el total de goles marcados y el total de goles recibidos.
+for i in range(1,11):
+    dif_scored_and_received_goals(i)
+print("")
+
+#  Determine la cantidad de puntos obtenidos por cada equipo.
+for i in range(1,11):
+    points_per_team(i)
+
+# 9.	Escribir un programa que simule el juego clásico de Memoria (Memotest) utilizando matrices. 
+#El juego consiste en un tablero de cartas boca abajo y el objetivo es encontrar todas las parejas de cartas iguales.
+import copy
+def showBoard(board):
+    pos = 1
+    coords2 = {1:'a', 2:'b', 3:'c', 4:'d'}
+    print(end='    ')
+    for i in range(1,5):
+        print(coords2[pos], end = '   ')
+        pos += 1
+    print("")
+    pos = 1
+    for i in board:
+        print(pos, end='   ')
+        for j in i:
+            print(j, end = '   ')
+        pos +=1
+        print("")
+
+def board_state(board):
+    board_state_bool = True
+    for i in board:
+        for j in i:
+            if j == 'X':
+                return False
+    return board_state_bool
+
+def card_input():
+    user_coord = input("Ingrese una posición (EJ: b3): ").lower()
+    while user_coord[0] not in coords.keys() or int(user_coord[1]) not in coords.values():
+        user_coord = input("Ingrese una posición valida: ").lower()
+    while current_board[int(user_coord[1])-1][coords[user_coord[0]]] != 'X':
+        user_coord = input(f"La carta en las coordenadas {user_coord} ya ha sido revelada: ").lower()
+        while user_coord[0] not in coords.keys() or int(user_coord[1]) not in coords.values():
+            user_coord = input("Ingrese una posición valida: ").lower()
+    while current_board_aux[int(user_coord[1])-1][coords[user_coord[0]]] != 'X':
+        user_coord = input(f"Ya has seleccionado esa carta: ").lower()
+        while user_coord[0] not in coords.keys() or int(user_coord[1]) not in coords.values():
+            user_coord = input("Ingrese una posición valida: ").lower()
+    return user_coord
+
+coords = {'a':0, 'b':1, 'c':2, 'd':3}
+current_board = [
+    ['X','X','X','X'],
+    ['X','X','X','X'],
+    ['X','X','X','X']]
+current_board_aux = copy.deepcopy(current_board)
+cards = [
+    [1,4,3,2],
+    [6,6,5,1],
+    [2,5,4,3]]
+complete_board = board_state(current_board)
+
+print("Bienvenido a Memotest!")
+print("Encuentra todos los pares del tablero para ganar el juego!")
+print("El tablero a resolver es el siguiente: ")
+print("")
+while complete_board == False:
+    already_selected = False
+    showBoard(current_board)
+    print("")
+    input_coord = card_input()
+    column = input_coord[0]
+    column = coords[column]
+    row = int(input_coord[1])-1
+    current_board_aux[row][column] = cards[row][column]
+    first_selected = current_board_aux[row][column]
+    showBoard(current_board_aux)
+    print("")
+    input_coord = card_input()
+    column = input_coord[0]
+    column = coords[column]
+    row = int(input_coord[1])-1
+    current_board_aux[row][column] = cards[row][column]
+    last_selected = current_board_aux[row][column]
+    showBoard(current_board_aux)
+    if last_selected == first_selected:
+        print("Has encontrado un par!")
+        print("")
+        current_board = copy.deepcopy(current_board_aux)
+    else:
+        print("No se ha encontrado un par")
+        print("")
+        current_board_aux = copy.deepcopy(current_board)
+    complete_board = board_state(current_board)
+
+print("Has ganado! Felicidades!")
+
+# 10.	Teniendo una matriz cuadrada de cualquier dimensión, obtener lo siguiente:
+# a.	la diagonal principal.
+# b.	la diagonal inversa.
+matrix = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]]
+principal_diagonal = []
+inverse_diagonal = []
+counter_i = 0
+counter_j = 0
+#obtener el largo de las filas de la matriz
+last = len(matrix[len(matrix)-1])-1
+
+print("La matriz es: ")
+for i in matrix:
+    for j in i:
+        print(j, end= '   ')
+    print("")
+#diagonal principal
+for i in matrix:
+    for j in i:
+        if counter_i == counter_j:
+            principal_diagonal.append(i[counter_j])
+        counter_j +=1
+    counter_j = 0
+    counter_i += 1
+#diagonal inversa
+for i in matrix:
+    for j in i:
+        if last == counter_j:
+            inverse_diagonal.append(i[counter_j])
+        counter_j +=1
+    counter_j = 0
+    last -= 1
+print("La diagonal principal de la matriz es: ", principal_diagonal)
+print("La diagonal inversa de la matriz es: ", inverse_diagonal)
+
+# 11.	Escribir un programa que guarde en una variable el diccionario {'Euro':'€', 'Dollar':'$', 'Yen':'¥'}, 
+# pregunte al usuario por una divisa y muestre su símbolo o un mensaje de aviso si la divisa no está en el diccionario.
+currency = {'Euro':'€', 'Dollar':'$', 'Yen':'¥'}
+currency_input = input("Ingrese una divisa: ").capitalize()
+if currency_input in currency.keys():
+    print(currency[currency_input])
+else:
+    print("La divisa ingresada no se encuentra en el sistema")
+
+# 12.	Escribir un programa que pregunte al usuario su nombre, edad, dirección y teléfono y lo guarde 
+# en un diccionario. Después debe mostrar por pantalla el mensaje ‘<nombre> tiene <edad> años, vive en 
+# <dirección> y su número de teléfono es <teléfono>’.
+info = {}
+info['name'] = input("Ingrese su nombre: ").title()
+info['age'] = input("Ingrese su edad: ")
+info['adress'] = input("ingrese su dirección: ").capitalize()
+info['phone_number'] = input("ingrese su número de teléfono: ")
+print(f"{info['name']} tiene {info['age']} años, vive en {info['adress']} y su número de teléfono es {info['phone_number']}")
+
+# 13.	Escribir un programa que guarde en un diccionario los precios de las frutas de la tabla, pregunte al 
+# usuario por una fruta, un número de kilos y muestre por pantalla el precio de ese número de kilos de fruta. 
+# Si la fruta no está en el diccionario debe mostrar un mensaje informando de ello.
+fruit_prices = {'manzana':510, 'frutilla':1300, 'banana':813, 'naranja':559}
+fruit = ""
+while fruit not in fruit_prices:
+    fruit = input("Ingrese la fruta que desea comprar: ").lower()
+    if fruit not in fruit_prices:
+        print("La fruta ingresada no se encuentra en el mercado.")
+fruit_amount = float(input(f"Cuantos kilos de {fruit} desea comprar? "))
+print(f"Ha comprado {fruit_amount} kilos de {fruit}, el precio de dichos kilos es de ${fruit_prices[fruit]*fruit_amount}")
