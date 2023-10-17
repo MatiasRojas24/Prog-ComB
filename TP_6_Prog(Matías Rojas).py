@@ -45,18 +45,18 @@ for i in less_than_list:
 # 5.	Generar e imprimir una nueva lista que contenga como elementos a tuplas, cada una compuesta por un 
 # número de la lista original y la cantidad de veces que aparece en ella. Por ejemplo, si la lista original 
 # es [5,16,2,5,57,5,2], la nueva lista contendrá: [(5,3),(16,1),(2,2),(57,1)]
-num_frecuency_list = []
+num_frequency_list = []
 counter = 0
 for i in num_list:
-    num_frecuency_list.append((i,num_list.count(i)))
-num_frecuency_list_aux = num_frecuency_list
-while counter != len(num_frecuency_list_aux):
-    i = num_frecuency_list_aux[counter]
-    if num_frecuency_list.count(i) != 1:
-        num_frecuency_list.remove(i)
+    num_frequency_list.append((i,num_list.count(i)))
+num_frequency_list_aux = num_frequency_list
+while counter != len(num_frequency_list_aux):
+    i = num_frequency_list_aux[counter]
+    if num_frequency_list.count(i) != 1:
+        num_frequency_list.remove(i)
     counter += 1
 print("Se ha creado una lista que incluye (num, cantidad de veces que se repite el número)")
-print("La listas resultante es: ",num_frecuency_list)
+print("La listas resultante es: ",num_frequency_list)
 
 # 6.	Solicitar al usuario que ingrese los nombres de pila de los alumnos de nivel primario de una escuela, finalizando al ingresar ‘x’. 
 # A continuación, solicitar que ingrese los nombres de los alumnos de nivel secundario, finalizando al ingresar ‘x’.
@@ -116,7 +116,7 @@ for i in elementary_school_names:
 counter = 0
 strings = []
 caracters = []
-caracter_frecuency = []
+caracter_frequency = []
 while counter != 50:
     string = input("Ingrese un string: ")
     strings.append(string)
@@ -132,10 +132,10 @@ for i in aux_caracters:
         caracters.remove(i)
 
 for i in caracters:
-    caracter_frecuency.append((f"'{i}':{aux_caracters.count(i)}"))
+    caracter_frequency.append((f"'{i}':{aux_caracters.count(i)}"))
 
 print("La lista de ocurrencias por caracter en los strings ingresados es la siguiente:")
-for i in caracter_frecuency:
+for i in caracter_frequency:
     print(i)
 
 # 8.	Diez equipos de la liga inter-barrial identificados con los números 1, 2, 3, 4, …, 10, participaron en un campeonato de fútbol 
