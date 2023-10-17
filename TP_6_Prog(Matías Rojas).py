@@ -117,7 +117,7 @@ counter = 0
 strings = []
 caracters = []
 caracter_frecuency = []
-while counter != 5:
+while counter != 50:
     string = input("Ingrese un string: ")
     strings.append(string)
     counter += 1
