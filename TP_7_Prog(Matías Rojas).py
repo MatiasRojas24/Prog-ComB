@@ -89,9 +89,83 @@ print(array)
 
 # 6.	Escribe un programa que tome una lista de números enteros y ordene la lista utilizando 
 # el algoritmo de ordenamiento por conteo.
+def counting_sort(numbers):
+    if not numbers:
+        return numbers
+    
+    max_value = max(numbers)
+    count = [0] * (max_value + 1)
 
+    for num in numbers:
+        count[num] += 1
+
+    sorted_numbers = []
+    for i in range(max_value + 1):
+        sorted_numbers.extend([i] * count[i])
+    
+    return sorted_numbers
+
+list = [3, 1, 4, 5, 2, 7, 10, 6, 9, 8]
+sorted_numbers = counting_sort(list)
+print(sorted_numbers)
 # 7.	Crea una lista que contenga tanto números como cadenas de caracteres. Escribe un programa 
 # que ordene esta lista de manera que primero estén los números ordenados de menor a mayor y luego 
 # las cadenas de caracteres ordenadas alfabéticamente.
+def order_numbers_strings(list):
+    numbers = []
+    strings = []
+
+    for i in list:
+        if isinstance(i, (int, float)):
+            numbers.append(i)
+        elif isinstance(i, str):
+            strings.append(i)
+        
+    numbers.sort()
+    strings.sort()
+
+    sorted_list = numbers + strings
+    return sorted_list
+
+mixed_list = ["Lionel Messi", 10, "Cristiano Ronaldo", 7, "Erling Haaland", 9]
+sorted_mixed_list = order_numbers_strings(mixed_list)
+print(sorted_mixed_list)
 
 # 8.	Implementa el algoritmo de ordenamiento Merge Sort y úsalo para ordenar una lista de números.
+def merge_sort(numbers):
+    if len(numbers) > 1:
+        mid = len(numbers) // 2  
+        left_half = numbers[:mid]
+        right_half = numbers[mid:]
+
+        merge_sort(left_half)  
+        merge_sort(right_half)  
+
+        i = j = k = 0
+
+        while i < len(left_half) and j < len(right_half):
+            if left_half[i] < right_half[j]:
+                numbers[k] = left_half[i]
+                i += 1
+            else:
+                numbers[k] = right_half[j]
+                j += 1
+            k += 1
+
+        while i < len(left_half):
+            numbers[k] = left_half[i]
+            i += 1
+            k += 1
+
+        while j < len(right_half):
+            numbers[k] = right_half[j]
+            j += 1
+            k += 1
+
+list = [3, 1, 4, 5, 2, 7, 10, 6, 9, 8]
+print("Lista Desordenada:")
+print(list)
+
+merge_sort(list)
+print("Lista Ordenada:")
+print(list)
