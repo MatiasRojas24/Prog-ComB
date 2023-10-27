@@ -1,4 +1,4 @@
-"""# 1.	Vamos a crear una clase llamada Persona. Sus atributos son: nombre, edad y DNI. Construye los siguientes métodos para la clase:
+# 1.	Vamos a crear una clase llamada Persona. Sus atributos son: nombre, edad y DNI. Construye los siguientes métodos para la clase:
 # •	Un constructor, donde los datos pueden estar vacíos.
 # •	Los setters y getters para cada uno de los atributos. Hay que validar las entradas de datos.
 # •	mostrar(): Muestra los datos de la persona.
@@ -65,7 +65,7 @@ print("")
 print("Triángulo 3:")
 print("Tipo de triángulo:",triangle3.triangle_type())
 print("Lado más largo:",triangle3.larger_side())
-print("")"""
+print("")
 
 # 4.	Realizar una clase que administre una agenda. Se debe almacenar para cada contacto el nombre, el teléfono y el email. 
 # Además deberá mostrar un menú con las siguientes opciones:
